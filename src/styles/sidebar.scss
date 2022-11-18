@@ -1,6 +1,6 @@
 #app {
   .main-container {
-    max-height: 100%;
+    height: 100%;
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
     position: relative;
@@ -14,18 +14,19 @@
     height: 100%;
     position: fixed;
     font-size: 0px;
-    top: 0;
+    top: 0; //navbar height 64
     bottom: 0;
     left: 0;
     z-index: 1001;
     overflow: hidden;
-
+    border-right: 1px solid rgb(239, 239, 245);
     // reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
 
     .scrollbar-wrapper {
+      margin-top: 8px;
       overflow-x: hidden !important;
     }
 
@@ -34,13 +35,7 @@
     }
 
     .el-scrollbar {
-      height: 100%;
-    }
-
-    &.has-logo {
-      .el-scrollbar {
-        height: calc(100% - 64px);
-      }
+      height: calc(100% - 64px); //parent height - hamburger 64
     }
 
     .is-horizontal {
@@ -55,6 +50,13 @@
 
     .svg-icon {
       margin-right: 10px;
+      transition: margin-left 0.28s;
+      width: 20px;
+      height: 20px;
+      vertical-align: -5px;
+    }
+    .menuNoIcon {
+      width: 0;
     }
 
     .sub-el-icon {
@@ -67,16 +69,17 @@
       height: 100%;
       width: 100% !important;
     }
-    el-menu-item,
+    .el-menu-item,
     .el-submenu__title {
       // 一级标题
       overflow: hidden !important;
       text-overflow: ellipsis !important;
       white-space: nowrap !important;
       font-size: 14px;
-      height: 50px;
-      line-height: 48px;
       user-select: none;
+      height: 50px;
+      line-height: 52px;
+      margin-bottom: 4px !important;
     }
     // menu hover
     .submenu-title-noDropdown,
@@ -84,6 +87,10 @@
       // 一级标题
       &:hover {
         background-color: $menuHover !important;
+        color: $menuActiveText !important;
+        i {
+          color: $menuActiveText !important;
+        }
       }
       i {
         color: $menuText !important;
@@ -91,21 +98,26 @@
     }
 
     .is-active > .el-submenu__title {
-      // 被选中的
+      // 被选中的 有展开的父级菜单
       i {
         color: $subMenuActiveText !important;
       }
       color: $subMenuActiveText !important;
+      // background-color: $subMenuActiveBg !important;
+    }
+    .is-active.submenu-title-noDropdown {
+      // 被选中的 没有有展开的父级菜单
+      background-color: $subMenuHover !important;
+      border-right: 4px solid $theme;
     }
 
     & .nest-menu .el-submenu > .el-submenu__title,
     & .el-submenu .el-menu-item {
+      padding-right: 0 !important;
       // 二级标题
-      min-width: $sideBarWidth - 14px !important;
+      min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
-      margin: 7px !important;
-      border-radius: 5px !important;
-      padding: 0;
+      margin-bottom: 4px !important;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -114,6 +126,7 @@
       }
       &.is-active {
         background-color: $subMenuHover !important;
+        border-right: 4px solid $theme;
       }
     }
   }
@@ -126,7 +139,10 @@
     .main-container {
       margin-left: 54px;
     }
-
+    .is-active.submenu-title-noDropdown {
+      // 被选中的 没有有展开的父级菜单
+      border-right: none;
+    }
     .submenu-title-noDropdown {
       padding: 0 !important;
       position: relative;
@@ -135,7 +151,8 @@
         padding: 0 !important;
 
         .svg-icon {
-          margin-left: 20px;
+          margin-left: 16px;
+          transition: margin-left 0.28s;
         }
 
         .sub-el-icon {
@@ -151,7 +168,8 @@
         padding: 0 !important;
 
         .svg-icon {
-          margin-left: 20px;
+          margin-left: 16px;
+          transition: margin-left 0.28s;
         }
 
         .sub-el-icon {
@@ -185,8 +203,9 @@
 
   // mobile responsive
   .mobile {
-    .main-container {
-      margin-left: 0px;
+    .app-main,
+    .tags-view-container {
+      margin-left: 54px;
     }
 
     .sidebar-container {
@@ -198,13 +217,15 @@
       .sidebar-container {
         pointer-events: none;
         transition-duration: 0.3s;
-        transform: translate3d(-$sideBarWidth, 0, 0);
+        transform: translate3d(0, 0, 0);
+        width: 54px !important;
       }
     }
   }
 
   .withoutAnimation {
-    .main-container,
+    .app-main,
+    .tags-view-container,
     .sidebar-container {
       transition: none;
     }
@@ -216,6 +237,7 @@
   & > .el-menu {
     .svg-icon {
       margin-right: 16px;
+      transition: margin-left 0.28s;
     }
     .sub-el-icon {
       margin-right: 12px;
@@ -230,10 +252,10 @@
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
     font-size: 14px;
+    min-width: $sideBarWidth !important;
+    margin: 4px 7px !important;
     height: 50px;
-    line-height: 48px;
-    min-width: $sideBarWidth - 14px !important;
-    margin: 7px !important;
+    line-height: 52px;
     border-radius: 5px !important;
     &:hover {
       // you can use $subMenuHover

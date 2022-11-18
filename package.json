@@ -10,8 +10,13 @@
     "report": "vue-cli-service build --report"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "base-64": "^1.0.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
+    "js-cookie": "^3.0.1",
+    "jsencrypt": "^3.0.0-rc.1",
+    "nprogress": "^0.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
@@ -29,6 +34,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "image-webpack-loader": "^8.1.0",
+    "mockjs": "^1.1.0",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",

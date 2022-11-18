@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-05-23 14:06:14
  * @LastEditors: mn
- * @LastEditTime: 2022-07-08 17:33:45
+ * @LastEditTime: 2022-10-31 13:25:40
  * @Description: vue.config.js 配置
  */
 const path = require('path')
@@ -73,6 +73,7 @@ module.exports = {
       //gzip压缩  需要 npm i -D compression-webpack-plugin@5.0.2
       // /\.(js|css|woff|woff2|ttf|eot|png|svg|jpg|jpeg)(\?.*)?$/i,
       new CompressionPlugin({
+        cache: false, // 不启用文件缓存
         algorithm: 'gzip', // 使用gzip压缩
         test: /\.js$|\.html$|\.css$/, // 匹配文件名
         filename: '[path].gz[query]', // 压缩后的文件名(保持原文件名，后缀加.gz)
@@ -206,7 +207,7 @@ module.exports = {
     loaderOptions: {
       scss: {
         /*sass-loader 8.0语法 */
-        //prependData: '@import "~@/styles/variables.scss";',
+        prependData: '@import "~@/styles/variables.scss";'
         /*sass-loader 9.0写法，感谢github用户 shaonialife*/
         // additionalData(content, loaderContext) {
         //   const { resourcePath, rootContext } = loaderContext
@@ -217,7 +218,7 @@ module.exports = {
         //   return content
         // }
       }
-    },
+    }
     // 为所有的 CSS 及其预处理文件开启 CSS Modules。
     // 这个选项不会影响 `*.vue` 文件。
     // requireModuleExtension: false // 去掉文件名中的 .module
@@ -233,7 +234,7 @@ module.exports = {
     },
     open: true, // 编译完成是否打开网页
     host: '0.0.0.0', // 指定使用地址，默认localhost,0.0.0.0代表可以被外界访问
-    port: 8026, // 访问端口
+    port: 1030, // 访问端口
     hot: true, // 开启热加载
     disableHostCheck: true
     // proxy: {

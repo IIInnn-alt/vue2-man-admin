@@ -11,8 +11,55 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: -apple-system, 'Helvetica Neue', 'Roboto-Regular', 'PingFang SC', 'SourceHanSansCN', 'Microsoft YaHei',
-    Arial, sans-serif;
+  font-family: -apple-system, 'Helvetica Neue', 'Roboto-Regular', 'PingFang SC', 'SourceHanSansCN', 'DFPKingGothicGB',
+    'Microsoft YaHei', Arial, sans-serif;
+}
+// 公共变量
+.themeColor {
+  color: $theme;
+}
+.mainText {
+  color: $theme;
+  cursor: pointer;
+}
+@mixin colorTag($backgroundcolor, $color) {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 4px;
+  background: $backgroundcolor;
+  color: $color;
+}
+
+.successBox {
+  @include colorTag(#eaf9f4, #2fc493);
+}
+.processBox {
+  @include colorTag(#eaf7fd, #31ade6);
+}
+.waitBox {
+  @include colorTag(#fdf6ec, #fec171);
+}
+.warnBox {
+  @include colorTag(#fdf2ee, #ee7953);
+}
+.errorBox {
+  @include colorTag(#fdefef, #e65f5f);
+}
+
+.error {
+  color: #e65f5f !important;
+}
+.warn {
+  color: #ee7953 !important;
+}
+.wait {
+  color: #fec171 !important;
+}
+.process {
+  color: #31ade6 !important;
+}
+.success {
+  color: #2fc493 !important;
 }
 
 label {
@@ -34,14 +81,6 @@ html {
   box-sizing: inherit;
 }
 
-.no-padding {
-  padding: 0px !important;
-}
-
-.padding-content {
-  padding: 4px 0;
-}
-
 a:focus,
 a:active {
   outline: none;
@@ -57,34 +96,6 @@ a:hover {
 
 div:focus {
   outline: none;
-}
-
-.fr {
-  float: right;
-}
-
-.fl {
-  float: left;
-}
-
-.pr-5 {
-  padding-right: 5px;
-}
-
-.pl-5 {
-  padding-left: 5px;
-}
-
-.block {
-  display: block;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.inlineBlock {
-  display: block;
 }
 
 .clearfix {
@@ -121,29 +132,171 @@ aside {
     }
   }
 }
-// 弹窗全局自定义
-.el-dialog {
-  margin-top: 0 !important;
+
+/** 表单布局 **/
+.form-header {
+  font-size: 15px;
+  color: #6379bb;
+  border-bottom: 1px solid #ddd;
+  margin: 8px 10px 25px 10px;
+  padding-bottom: 5px;
+}
+
+/* tree border */
+.tree-border {
+  margin-top: 5px;
+  border: 1px solid #e5e6e7;
+  background: #ffffff none;
   border-radius: 4px;
-  .el-dialog__header {
-    border-bottom: 1px solid #e8e8e8;
-  }
-  .el-dialog__footer {
-    border-top: 1px solid #e8e8e8;
+}
+.el-tree-node__content > .el-checkbox {
+  margin-right: 8px;
+}
+
+.el-table .fixed-width .el-button--mini {
+  padding-left: 0;
+  padding-right: 0;
+  width: inherit;
+}
+/** 表格更多操作下拉样式 */
+.el-table .el-dropdown-link {
+  cursor: pointer;
+  color: #409eff;
+  margin-left: 5px;
+}
+
+.el-table .el-dropdown,
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+
+//self  弹窗全局自定义
+.v-modal {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+.el-dialog__wrapper {
+  .el-dialog {
+    border-radius: 6px;
+    .el-dialog__header {
+      padding: 16px 24px !important;
+      // color: rgba(0, 0, 0, 0.65);
+      color: #2d3239;
+      font-weight: bold;
+      font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
+      background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, rgba(213, 232, 255, 0.5) 100%);
+      border-bottom: 1px solid #e8e8e8;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+    .el-dialog__body {
+      padding: 30px 20px !important;
+      overflow: auto;
+      overflow-x: hidden;
+      max-height: 60vh;
+    }
+    .el-dialog__footer {
+      padding: 10px 16px !important;
+      border-top: 1px solid #e8e8e8;
+    }
+    .el-select {
+      width: 100%;
+    }
+    .el-date-editor {
+      width: 100%;
+    }
+    .el-date-editor.el-input,
+    .el-date-editor.el-input__inner {
+      width: 100%;
+    }
   }
 }
+
+// .el-dialog:not(.is-fullscreen) {}
+
 //自定义  button font
 .el-button {
   font-family: -apple-system, 'Helvetica Neue', 'Roboto-Regular', 'PingFang SC', 'SourceHanSansCN', 'Microsoft YaHei',
     Arial, sans-serif !important;
 }
 
+.el-table {
+  .el-table__body-wrapper {
+    /* 自定义 表格高度  单行表头*/
+    height: calc(100% - 44px) !important;
+    .el-button [class*='el-icon-'] + span {
+      margin-left: 1px;
+    }
+  }
+  /* 自定义 使其 空显示 居中 */
+  // .el-table__empty-block {
+  //   justify-content: flex-start !important;
+  //   .el-table__empty-text {
+  //     width: 89vw; //设置宽度（根据屏幕宽度）
+  //   }
+  // }
+  .el-table__empty-block {
+    width: 100% !important;
+  }
+  // --
+  @media screen and (max-width: 1300px) {
+    /* 表格内部的 每个td 高度 */
+    td.el-table__cell div {
+      min-height: 28px;
+      line-height: 28px;
+    }
+  }
+}
+
+// custom   修改 带有选择框， checkBox 不居中问题
+.el-table-column--selection .cell {
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+}
+// 自定义table滚动样式
+.el-table--scrollable-y .el-table__header-wrapper .has-gutter th:nth-last-of-type(2) {
+  border-right: none;
+}
+.el-table--border th.el-table__cell.gutter:last-of-type {
+  background: #ecf2f8; //transparent; 如果表格有背景色,请保持一致
+}
+//  自定义talbe中的分页
+.pagination-wrapper .el-pagination--small .el-pagination__sizes {
+  .el-input__inner {
+    height: 24px;
+    line-height: 24px;
+  }
+}
+// el 下拉框
+.custom_dropdown {
+  padding: 6px;
+  .el-dropdown-menu__item {
+    margin: 5px 0;
+    padding: 0 14px !important;
+    font-size: 14px;
+    .dropdown_icon {
+      margin-right: 5px;
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+    }
+  }
+}
+
+//自定义  tree-select
+.el-tree {
+  .el-tree-node {
+    .el-tree-node__content {
+      height: 32px;
+    }
+  }
+}
+
 //main-container全局样式 self
 .app-container {
-  /* 89= navbar  64  + app-main 的padding top bottom 10 * 2 */
-  height: calc(100vh - 84px);
+  /* 80 =  navbar  64  +  app-main 的padding top bottom 8 * 2 */
+  // height: calc(100vh - 80px);
+  min-height: 100%; //最好是min-height,文本超出后，滚动条会以.app-main，若项目不涉及 position: sticky,用height
   position: relative;
-  overflow-y: auto;
   border-radius: 3px;
 }
 
@@ -151,73 +304,25 @@ aside {
   height: 100%;
   border-radius: 3px;
   position: relative;
+  background: #fff;
+  padding: 8px;
+}
+// 解决闪一下
+[v-cloak] {
+  display: none !important;
 }
 
-.pagination-container {
-  margin-top: 30px;
+/* 高德地图 去除图标和 版本号*/
+.amap-logo {
+  display: none !important;
 }
-
-.text-center {
-  text-align: center;
+.amap-copyright {
+  opacity: 0;
 }
-
-.sub-navbar {
-  height: 50px;
-  line-height: 50px;
-  position: relative;
-  width: 100%;
-  text-align: right;
-  padding-right: 20px;
-  transition: 600ms ease position;
-  background: linear-gradient(
-    90deg,
-    rgba(32, 182, 249, 1) 0%,
-    rgba(32, 182, 249, 1) 0%,
-    rgba(33, 120, 241, 1) 100%,
-    rgba(33, 120, 241, 1) 100%
-  );
-
-  .subtitle {
-    font-size: 20px;
-    color: #fff;
-  }
-
-  &.draft {
-    background: #d0d0d0;
-  }
-
-  &.deleted {
-    background: #d0d0d0;
-  }
-}
-
-.link-type,
-.link-type:focus {
-  color: #337ab7;
-  cursor: pointer;
-
-  &:hover {
-    color: rgb(32, 160, 255);
-  }
-}
-
-.filter-container {
-  padding-bottom: 10px;
-
-  .filter-item {
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 10px;
-  }
-}
-
-//refine vue-multiselect plugin
-.multiselect {
-  line-height: 16px;
-}
-
-.multiselect--active {
-  z-index: 1000 !important;
+/* 高德地图 查询结果 */
+.amap-sug-result {
+  z-index: 6000;
+  border: none;
 }
 
 //  修改滚动条样式

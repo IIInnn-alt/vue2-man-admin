@@ -10,3 +10,10 @@
   src: url('SourceHanSansCN/SourceHanSansCN-Regular.woff2');
   font-display: swap;
 }
+
+@font-face {
+  /* 华康金刚黑 */
+  font-family: 'DFPKingGothicGB';
+  src: url('DFPKingGothicGB/DFPKingGothicGB-Regular.woff2');
+  font-display: swap;
+}
