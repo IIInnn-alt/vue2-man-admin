@@ -32,6 +32,44 @@ export function loadMap(key = '434451d7938836f1a36d6791d7303b13', plugins, v = '
 }
 
 /**
+ * @description:通用返回格式的 数据请求
+ * @param {*} apiName  api.js中定义的 接口名称
+ * @param {*} params  查询参数
+ */
+export async function getApiData({ apiName, params = {} }) {
+  let paramsObj = Object.assign({ page: 1, limit: 999 }, params)
+  let res = await this.$api[apiName](paramsObj)
+  try {
+    if (res.code == 200) {
+      return res.data.records || res.data
+    } else {
+      return []
+    }
+  } catch (error) {
+    return []
+  }
+}
+
+/**
+ * @description: table表格中 格式化
+ * @param {*} (row, column, value, index) 为 formatter参数
+ */
+import { isEmpty } from './validate'
+export function emptyFmt(row, column, value, index) {
+  return isEmpty(value) ? '-' : value
+}
+
+/**
+ * @description: 基于16px的基础上,适应不同的 px转换
+ * @param {*} val 为 number 类型 单位px
+ */
+export function autoPx(val) {
+  let defaultSize = 16
+  let currentSize = parseFloat(document.documentElement.style.fontSize) || 16
+  return (parseFloat(val) / defaultSize) * currentSize + 'px'
+}
+
+/**
  * @description 绑定事件 on(element, event, handler)
  */
 export const on = (function () {
@@ -79,7 +117,7 @@ export function timeFix() {
 }
 
 /**
- * 过滤特殊字符  
+ * 过滤特殊字符
  */
 export function stripscript(str) {
   var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;—|{ }【】‘；：”“'。，、？]")

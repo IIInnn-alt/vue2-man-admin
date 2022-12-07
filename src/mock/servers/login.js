@@ -95,8 +95,8 @@ export default [
     }
   },
   {
-    //获取role列表
-    url: '/rolelist',
+    //test获取
+    url: '/testrolelist',
     type: 'get',
     response: config => {
       validToken(config.headers.Authorization)

@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-07-13 16:18:05
  * @LastEditors: mn
- * @LastEditTime: 2022-11-03 14:06:52
+ * @LastEditTime: 2022-11-29 10:53:55
  * @Description:api管理
  */
 import {
@@ -19,6 +19,9 @@ import qs from 'qs'
 export default {
   // mock.js 拦截
   getCheckCode(params) { return HTTP_GET('/getCheckCode', params) },   //获取验证码
+  // compons -table
+  getTableData(params) { return HTTP_GET('/mock/getTableData', params) },  //获取数据
+  getRoleData(params) { return HTTP_GET('/mock/getRoleData', params) },  //获取角色列表数据
 }
 
 /**

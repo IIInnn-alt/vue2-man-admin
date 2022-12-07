@@ -2,18 +2,11 @@
  * @Author: mn
  * @Date: 2022-03-04 10:26:24
  * @LastEditors: mn
- * @LastEditTime: 2022-05-11 14:27:37
+ * @LastEditTime: 2022-11-29 11:13:16
  * @Description: select 选择器
 -->
 <template>
-  <el-select
-    v-model="selectValue"
-    filterable
-    :placeholder="placeholder"
-    :disabled="disabled"
-    :clearable="clearable"
-    @change="selectChange"
-  >
+  <el-select v-model="selectValue" filterable :placeholder="placeholder" @change="selectChange" v-bind="$attrs">
     <el-option v-for="(item, index) in data" :key="index" :label="item[labelCode]" :value="item[valueCode]">
       <slot></slot>
     </el-option>
@@ -38,10 +31,7 @@ export default {
       type: String,
       default: ''
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+
     valueCode: {
       type: String,
       default: 'id' //默认字段id
@@ -49,10 +39,6 @@ export default {
     labelCode: {
       type: String,
       default: 'label' //默认字段label
-    },
-    clearable: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {
@@ -70,12 +56,10 @@ export default {
     selectChange(value) {
       this.$emit('input', value) //抛出去 给 v-model  也就是：:value
       let options = this.data.find(item => {
-        return item[this.valueCode] === value
+        return item[this.valueCode] == value
       })
       this.$emit('change', value, options)
     }
   }
 }
 </script>
-
-

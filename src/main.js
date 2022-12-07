@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-05-23 14:02:51
  * @LastEditors: mn
- * @LastEditTime: 2022-11-04 13:31:30
+ * @LastEditTime: 2022-11-22 11:35:34
  * @Description:
  */
 import Vue from 'vue'
@@ -20,11 +20,13 @@ import plugins from './plugins' // plugins
 import './assets/icons' // icon svg-icon
 import './permission' // permission control
 
-import './components' //注册组件
+// components 管理
+import './components' //全局注册的组件
 // api管理
 import api from '@/api'
 
 // 全局方法挂载
+import './utils/globalUtils'
 Vue.prototype.$api = api // api
 
 // install 和 use 使用

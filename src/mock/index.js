@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-07-12 11:30:51
  * @LastEditors: mn
- * @LastEditTime: 2022-10-28 09:18:07
+ * @LastEditTime: 2022-11-22 09:37:04
  * @Description: mock
  *  npm install mockjs -D  开发依赖
  */
@@ -17,7 +17,6 @@ const mocks = []
 files.keys().forEach(fileName => {
   mocks.push(...files(fileName).default)
 })
-
 //可扩展
 Random.extend({
   constellation: function (date) {

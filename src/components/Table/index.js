@@ -175,7 +175,6 @@ export default {
      * @param {Object} pagination 分页选项器
      */
     loadData(pagination) {
-      this.localLoading = true
       const parameter = Object.assign({
         page: (pagination && pagination.page) || this.currentPage,
         limit: (pagination && pagination.limit) || this.pageSize
@@ -184,16 +183,16 @@ export default {
       // 对接自己的通用数据接口需要修改下方代码中的 r.pageNo, r.totalCount, r.data
       // eslint-disable-next-line
       if ((typeof result === 'object' || typeof result === 'function') && typeof result.then === 'function') {
+        this.localLoading = true
+        // this.total = 0
         result
           .then(r => {
-            if (r != null) {
-              this.total = r.totalCount || 0
-              this.localData = r.list || []
-            }
-            this.localLoading = false
+            this.total = (r && r.total) || 0
+            this.localData = (r && r.records) || []
             setTimeout(() => {
               this.getHeight()
             }, 100)
+            this.localLoading = false
           })
           .catch(() => {
             this.localLoading = false
@@ -258,7 +257,7 @@ export default {
       let obj = {}
       attr.forEach(prop => {
         // 如果设置了 type=index，可以通过传递 index：Function(index),此项目要求统一就直接在此写格式化函数了
-        if (column[prop] == 'index') {
+        if (prop == 'type' && column[prop] == 'index') {
           obj['index'] = index => {
             return (this.currentPage - 1) * this.pageSize + index + 1
           }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" href="<%= BASE_URL %>wl.ico">
+  <title>
+    <%= webpackConfig.name %>
+  </title>
+  <script>
+    var userAgent = navigator.userAgent;
+    if (/edg/i.test(userAgent)) {
+      console.log('edg');
+    } else if (/chrome/i.test(userAgent)) {
+      console.log('chrome');
+    }else if (/msie/i.test(userAgent)) {
+      console.log('IE');
+      window.location.href='/html/ie.html';
+    }else if ('ActiveXObject' in window) {
+      console.log('IE11');
+      window.location.href='/html/ie.html';
+    }
+  </script>
+  <style>
+    html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .chromeframe {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+    }
+
+    .spinner-box {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #2A343C;
+      z-index: 9999;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(359deg);
+      }
+    }
+
+    .solar-system {
+      width: 250px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .orbit {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ffffffa5;
+      border-radius: 50%;
+    }
+
+    .earth-orbit {
+      width: 165px;
+      height: 165px;
+      -webkit-animation: spin 10s linear 0s infinite;
+    }
+
+    .venus-orbit {
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 5.4s linear 0s infinite;
+    }
+
+    .mercury-orbit {
+      width: 90px;
+      height: 90px;
+      -webkit-animation: spin 1s linear 0s infinite;
+    }
+
+    .planet {
+      position: absolute;
+      top: -5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #3ff9dc;
+    }
+
+    .sun {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #ffab91;
+    }
+
+    .loadTitle {
+      font-family: 'Open Sans';
+      color: #FFF;
+      font-size: 19px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="spinner-box">
+      <div class="solar-system">
+        <div class="earth-orbit orbit">
+          <div class="planet earth"></div>
+          <div class="venus-orbit orbit">
+            <div class="planet venus"></div>
+            <div class="mercury-orbit orbit">
+              <div class="planet mercury"></div>
+              <div class="sun"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loadTitle">正在加载系统资源，请耐心等待</div>
+    </div>
+  </div>
+</body>
+
+</html>

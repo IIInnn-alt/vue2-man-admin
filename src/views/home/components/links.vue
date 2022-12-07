@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-11-07 17:05:46
  * @LastEditors: mn
- * @LastEditTime: 2022-11-08 13:22:40
+ * @LastEditTime: 2022-11-23 10:00:00
  * @Description: 
 -->
 <template>
@@ -88,7 +88,7 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   .link_box {
-    width: 300px;
+    width: 320px;
     height: 120px;
     border: 1px solid rgb(239, 239, 245);
     border-radius: 3px;

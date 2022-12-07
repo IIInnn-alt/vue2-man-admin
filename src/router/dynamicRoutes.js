@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-10-28 13:45:30
  * @LastEditors: mn
- * @LastEditTime: 2022-11-08 15:04:00
+ * @LastEditTime: 2022-11-30 11:13:20
  * @Description:
  */
 
@@ -44,6 +44,12 @@ export default [
         component: () => import('@/views/compons/table/index.vue'),
         name: 'table',
         meta: { title: '自定义Table' }
+      },
+      {
+        path: 'icons',
+        component: () => import('@/views/compons/icons/index.vue'),
+        name: 'icons',
+        meta: { title: 'icons图标' }
       }
     ]
   }
