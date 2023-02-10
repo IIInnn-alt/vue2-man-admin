@@ -1,0 +1,14 @@
+//.babelrc文件配置后的plugins选项内容
+{
+  "plugins": [
+    [
+      "prismjs",
+      {
+        "languages": ["javascript", "css", "markup"],
+        "plugins": ["line-numbers"],
+        "theme": "twilight",
+        "css": true
+      }
+    ]
+  ]
+}

@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-10-28 13:45:30
  * @LastEditors: mn
- * @LastEditTime: 2022-11-30 11:13:20
+ * @LastEditTime: 2022-12-12 11:13:05
  * @Description:
  */
 
@@ -46,10 +46,40 @@ export default [
         meta: { title: '自定义Table' }
       },
       {
+        path: 'select',
+        component: () => import('@/views/compons/select/index.vue'),
+        name: 'mselect',
+        meta: { title: '自定义Select' }
+      },
+      {
         path: 'icons',
         component: () => import('@/views/compons/icons/index.vue'),
         name: 'icons',
         meta: { title: 'icons图标' }
+      }
+    ]
+  },
+  {
+    path: '/document',
+    component: Layout,
+    alwaysShow: true,
+    meta: {
+      title: '笔记文档',
+      icon: 'menuDocment'
+    },
+    roles: ['admin'],
+    children: [
+      {
+        path: 'npm',
+        component: () => import('@/views/document/node/index.vue'),
+        name: 'node',
+        meta: { title: 'node软件包管理' }
+      },
+      {
+        path: 'git',
+        component: () => import('@/views/document/git/index.vue'),
+        name: 'git',
+        meta: { title: 'git' }
       }
     ]
   }

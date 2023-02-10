@@ -42,8 +42,10 @@ if (process.env.NODE_ENV === 'development') {
   const { mockXHR } = require('./mock')
   mockXHR()
 }
+
 console.log(process.env, 'process.env项目环境文件')
 console.log(BUILD_DATE, 'BUILD_DATE')
+console.log(module,'module');
 new Vue({
   router,
   store,

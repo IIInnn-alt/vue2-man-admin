@@ -2,12 +2,13 @@
  * @Author: mn
  * @Date: 2022-06-02 17:29:53
  * @LastEditors: mn
- * @LastEditTime: 2022-08-25 10:26:55
+ * @LastEditTime: 2022-12-07 17:24:21
  * @Description: 笔记
 -->
 
 # npm
 
+ see <https://juejin.cn/post/7031339747125493790#heading-12>
 -S, --save 安装包信息将加入到dependencies（生产阶段的依赖,也就是项目运行时的依赖，就是程序上线后仍然需要依赖）
 
 -D, --save-dev 安装包信息将加入到devDependencies（开发阶段的依赖，就是我们在开发过程中需要的依赖，只在开发阶段起作业的，编译构建的）
