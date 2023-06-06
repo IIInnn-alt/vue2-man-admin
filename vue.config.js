@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-05-23 14:06:14
  * @LastEditors: mn
- * @LastEditTime: 2022-10-31 13:25:40
+ * @LastEditTime: 2023-05-05 15:06:13
  * @Description: vue.config.js 配置
  */
 const path = require('path')
@@ -240,11 +240,11 @@ module.exports = {
     // proxy: {
     //设置代理 ,解决跨域，替换域名 --> request.js
     // '/devApi': {
-    //   target: 'http://localhost:3000', //API服务器的地址
-    //   changeOrigin: true,
+    //   target: 'http://localhost:3000', //目标服务器 API服务器的地址
+    //   changeOrigin: true, //// 允许跨域
     //   pathRewrite: {
     //     //路径重写
-    //     '^/devApi': ''
+    //     '^/devApi': '' //// 去掉请求地址中的 /devApi 前缀
     //   }
     // }
     // 对/devApi/users 的请求会将请求代理到 http://localhost:3000/users

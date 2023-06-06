@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-12-09 11:06:33
  * @LastEditors: mn
- * @LastEditTime: 2022-12-09 13:28:25
+ * @LastEditTime: 2023-03-22 16:09:50
  * @Description: 
 -->
 <template>
@@ -47,6 +47,14 @@
             <tr>
               <td>nvm install</td>
               <td>安装最新版本nvm</td>
+            </tr>
+            <tr>
+              <td>nvm install latest</td>
+              <td>安装最新版本node版本</td>
+            </tr>
+            <tr>
+              <td>nvm install &lt;version&gt;</td>
+              <td>安装指定node版本</td>
             </tr>
             <tr>
               <td>nvm use &lt;version&gt;</td>

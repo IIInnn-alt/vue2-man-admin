@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-11-07 17:05:46
  * @LastEditors: mn
- * @LastEditTime: 2022-11-23 10:00:00
+ * @LastEditTime: 2023-05-05 15:37:12
  * @Description: 
 -->
 <template>
@@ -103,6 +103,7 @@ export default {
       color: #316c72;
       font-size: 18px;
       text-decoration: underline;
+      margin: 18px 0;
     }
     p:nth-child(2) {
       color: $theme;

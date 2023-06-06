@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-07-14 10:28:09
  * @LastEditors: mn
- * @LastEditTime: 2022-07-14 14:07:17
+ * @LastEditTime: 2023-05-05 13:54:03
  * @Description: 数据处理
  */
 
@@ -93,4 +93,97 @@ export function arrObjSort(list = [], inx, type = 1) {
     }
   }
   return data.sort(compare)
+}
+
+/**
+ * @description: 数组合并去重  根据
+ */
+export function mergeArray(arr1, arr2) {
+  var _arr = new Array()
+  for (var i = 0; i < arr1.length; i++) {
+    _arr.push(arr1[i])
+  }
+  for (var i = 0; i < arr2.length; i++) {
+    var flag = true
+    for (var j = 0; j < arr1.length; j++) {
+      if (arr2[i] == arr1[j]) {
+        flag = false
+        break
+      }
+    }
+    if (flag) {
+      _arr.push(arr2[i])
+    }
+  }
+  return _arr
+}
+
+/**
+ * @description: 根据 aid 找出对应的数据 返回数组
+ * @param {*} dataSource 源数据
+ * @param {*} aid
+ */
+export function filterDataToArray(dataSource = [], aid) {
+  let result = []
+  if (!Array.isArray(dataSource)) {
+    return result
+  }
+  for (const item of dataSource) {
+    if (item.id == aid) {
+      result.push(item)
+      return result
+    } else {
+      if (item.children && item.children.length) {
+        return filterDataToArray(item.children, aid)
+      }
+    }
+  }
+}
+/**
+ * @description: 根据 aid 找出对应的数据 返回项
+ * @param {*} dataSource 源数据
+ * @param {*} key
+ */
+export function filterData(dataSource = [], aid) {
+  for (const item of dataSource) {
+    if (item.id == aid) {
+      return item
+    } else {
+      if (item.children && item.children.length) {
+        let res = filterData(item.children, aid)
+        if (res) {
+          return res
+        }
+      }
+    }
+  }
+  return null
+}
+
+/**
+ * @description: 根据搜索条件查询树形结构数据  返回上下级 结构
+ * @param {*} value 单个搜索条件
+ * @param {*} arr  源数据
+ * @param {*} key  条件key
+ */
+export function searchTree(value, arr, key) {
+  let newarr = []
+  arr.forEach(element => {
+    if (element[key].indexOf(value) > -1) {
+      // 判断条件
+      newarr.push(element)
+    } else {
+      if (element.children && element.children.length > 0) {
+        let redata = searchTree(value, element.children, key)
+        if (redata && redata.length > 0) {
+          let obj = {
+            ...element,
+            children: redata
+          }
+          newarr.push(obj)
+        }
+      }
+    }
+  })
+  return newarr
 }

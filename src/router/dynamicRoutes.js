@@ -80,6 +80,12 @@ export default [
         component: () => import('@/views/document/git/index.vue'),
         name: 'git',
         meta: { title: 'git' }
+      },
+      {
+        path: 'class',
+        component: () => import('@/views/document/class/index.vue'),
+        name: 'class',
+        meta: { title: 'class类' }
       }
     ]
   }

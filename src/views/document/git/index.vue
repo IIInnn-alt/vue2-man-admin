@@ -2,13 +2,13 @@
  * @Author: mn
  * @Date: 2022-12-09 15:36:00
  * @LastEditors: mn
- * @LastEditTime: 2023-01-29 15:21:44
+ * @LastEditTime: 2023-05-05 13:35:53
  * @Description: 
 -->
 <template>
   <div class="app-container">
     <m-card>
-      <div slot="header">git</div>
+      <div slot="header" class="headerLabel">git</div>
       <div>
         <h3>配置用户名和邮件地址</h3>
         <span>
@@ -41,6 +41,8 @@
         <h3>开发新的功能了最好放在新的分支上，在合并到主分支 1.要切换到主分支路径上，在合并新功能所在的子分支</h3>
         <span>git branch 查看所有分支</span>
         <br />
+        <span>git branch -a 查看远程分支</span>
+        <br />
         <span>git branch [branch-name] 创建本地分支</span>
         <br />
         <span>git checkout -b [branch-name] 切换分支</span>
@@ -48,6 +50,16 @@
         <span>git fetch 获取远程所有分支</span>
         <br />
         <span>git merge [branch-name] 合并指定分支到当前分支</span>
+        <br />
+        <span>git stash 暂存工作区修改的内容</span>
+        <br />
+        <span>git stash pop 和git stash相反,git stash pop 是恢复暂存的工作区内容，默认恢复最新一次stash</span>
+        <br />
+        <span>git stash list 查询工作区所有stash的列表</span>
+        <br />
+        <span>git stash apply 指定恢复git stash apply [stash@`{`2`}]名字</span>
+        <br />
+        <span>git stash clear 清空stash</span>
         <br />
         <span>git add . 添加当前目录的所有文件到暂存区</span>
         <br />
@@ -61,7 +73,31 @@
       </div>
     </m-card>
     <m-card>
-      <div slot="header">git commit规范</div>
+      <div slot="header" class="headerLabel">git 如何修改分支名</div>
+      <ul>
+        <li>1.重命名分支: git branch -m oldBranch newBranch</li>
+        <h3>
+          注意，如果修改的分支只是在本地，还没有推送到远程，只需要执行该操作即可。后面的操作步骤是针对已经推送到远程的分支
+        </h3>
+        <li>2、删除远程分支: git push --delete origin oldBranch</li>
+        <li>3、上传新命名的本地分支 : git push origin newBranch</li>
+        <li>4、本地分支与远程分支关联: git branch --set-upstream-to origin/newBranch</li>
+        <li>其中,第3、4步命令也可以直接用下面的命令代替: git push -u origin newBranch</li>
+      </ul>
+    </m-card>
+    <m-card>
+      <div slot="header" class="headerLabel">git 如何将某A分支的部分代码合并到B分支上面</div>
+      <ul>
+        <li>1.A分支: git log查看日志,自己提交的该功能对应的hash值</li>
+        <li>
+          2、切换到B分支:通过git cherry-pick [commit对应的hash1值、hash2值]
+          将当前hash对应提交的代码合并到B分支上去,注意hash1时间必须早于hash2
+        </li>
+        <li>3、在B分支上、可以恢复工作区的提交(A传入过来的),然后查看代码</li>
+      </ul>
+    </m-card>
+    <m-card>
+      <div slot="header" class="headerLabel">git commit规范</div>
       <ul>
         <li>feat: 新增feature</li>
         <li>fix: 修复bug</li>
@@ -80,7 +116,7 @@
       </ul>
     </m-card>
     <m-card>
-      <div slot="header">常见报错</div>
+      <div slot="header" class="headerLabel">常见报错</div>
       <div>
         <h3>
           fatal: unable to access 'https://github.com/qdleader/qdleader.git/': Failed to connect to github.com port 443:

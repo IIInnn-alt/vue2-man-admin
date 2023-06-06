@@ -128,6 +128,7 @@ export function stripscript(str) {
   return rs
 }
 
+//  npm install -S file-saver xlsx
 // import FileSaver from 'file-saver'
 // import XLSX from 'xlsx'
 // // 导出excel

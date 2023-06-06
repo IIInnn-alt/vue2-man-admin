@@ -22,6 +22,7 @@ export default {
   // compons -table
   getTableData(params) { return HTTP_GET('/mock/getTableData', params) },  //获取数据
   getRoleData(params) { return HTTP_GET('/mock/getRoleData', params) },  //获取角色列表数据
+  getSelectData(params) { return HTTP_GET('/mock/getSelectData', params) },  //获取select数据
 }
 
 /**

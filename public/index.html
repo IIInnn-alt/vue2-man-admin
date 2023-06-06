@@ -1,24 +1,63 @@
+<!--
+ * @Author: mn
+ * @Date: 2022-05-23 14:02:51
+ * @LastEditors: mn
+ * @LastEditTime: 2023-05-05 15:31:07
+ * @Description: 
+-->
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>
-        We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+  <link rel="stylesheet" href="<%= BASE_URL %>loading.css" rel=preload>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <script>
+    var userAgent = navigator.userAgent;
+    if (/edg/i.test(userAgent)) {
+      console.log('edg');
+    } else if (/chrome/i.test(userAgent)) {
+      console.log('chrome');
+    } else if (/msie/i.test(userAgent)) {
+      console.log('IE');
+      window.location.href = '/html/ie.html';
+    } else if ('ActiveXObject' in window) {
+      console.log('IE11');
+      window.location.href = '/html/ie.html';
+    }
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>
+      We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
         enable it to continue.
-      </strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- require cdn assets js -->
-    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+    </strong>
+  </noscript>
+  <div id="app">
+    <div class="loading-content">
+      <div class="waviy">
+        <span style="--i:1">L</span>
+        <span style="--i:2">O</span>
+        <span style="--i:3">A</span>
+        <span style="--i:4">D</span>
+        <span style="--i:5">I</span>
+        <span style="--i:6">N</span>
+        <span style="--i:7">G</span>
+       </div>
+    </div>
+  </div>
+  <!-- require cdn assets js -->
+  <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
     <script type="text/javascript" src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
     <% } %>
-    <!-- built files will be auto injected -->
-  </body>
+      <!-- built files will be auto injected -->
+</body>
+
 </html>

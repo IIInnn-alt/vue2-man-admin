@@ -3,7 +3,8 @@
  * @Date: 2022-05-23 14:02:51
  * @LastEditors: mn
  * @LastEditTime: 2022-12-12 14:18:37
- * @Description:
+ * @Description:  npm install prismjs -S
+                  npm install babel-plugin-prismjs -D
  */
 module.exports = {
   presets: ['@vue/cli-plugin-babel/preset'],
