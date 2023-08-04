@@ -15,9 +15,8 @@ const getters = {
   refresh_token: state => state.user.refresh_token,
   userName: state => state.user.userName,
   userInfo: state => state.user.userInfo,
-  currentPatientInfo: state => state.user.currentPatientInfo,
-  currentDoctorInfo: state => state.user.currentDoctorInfo,
   roles: state => state.user.roles,
-  permission_routes: state => state.permission.routes
+  permission_routes: state => state.permission.routes,
+  language: state => state.settings.language,
 }
 export default getters

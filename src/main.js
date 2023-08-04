@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-05-23 14:02:51
  * @LastEditors: mn
- * @LastEditTime: 2023-05-05 15:01:00
+ * @LastEditTime: 2023-06-13 11:39:22
  * @Description:
  */
 import Vue from 'vue'
@@ -16,6 +16,7 @@ import './styles/index.scss' // global css
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import i18n from '@/i18n'
 import directive from './directive' // directive
 import plugins from './plugins' // plugins
 import './assets/icons' // icon svg-icon
@@ -47,7 +48,7 @@ if (process.env.NODE_ENV === 'development') {
 
 console.log(process.env, 'process.env项目环境文件')
 console.log(BUILD_DATE, 'BUILD_DATE')
-console.log(module,'module');
+console.log(module, 'module')
 
 // 导入图片预加载方法以及图片列表
 import { imgsPreloader } from '@/config/imgPreloader.js'
@@ -60,6 +61,7 @@ let custom_render = async () => {
   new Vue({
     router,
     store,
+    i18n,
     render: h => h(App)
   }).$mount('#app')
 }

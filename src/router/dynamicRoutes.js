@@ -2,7 +2,7 @@
  * @Author: mn
  * @Date: 2022-10-28 13:45:30
  * @LastEditors: mn
- * @LastEditTime: 2022-12-12 11:13:05
+ * @LastEditTime: 2023-06-13 13:17:10
  * @Description:
  */
 
@@ -86,6 +86,12 @@ export default [
         component: () => import('@/views/document/class/index.vue'),
         name: 'class',
         meta: { title: 'class类' }
+      },
+      {
+        path: 'vueI18n',
+        component: () => import('@/views/document/i18n/index.vue'),
+        name: 'i18n',
+        meta: { title: '国际化i18n' }
       }
     ]
   }
